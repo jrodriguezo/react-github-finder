@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom'
 function Footer() {
     const footerYear = new Date().getFullYear()
 
-  return <footer class="p-10 footer bg-base-200 text-base-content footer-center">
-  <div class="grid grid-flow-col gap-4">
+  return <footer className="p-10 footer bg-base-200 text-base-content footer-center">
+  <div className="grid grid-flow-col gap-4">
     <Link to='/about' className="link link-hover">
         About us
     </Link>    
   </div>
 
   <div>
-    <div class="grid grid-flow-col gap-4">
+    <div className="grid grid-flow-col gap-4">
       <a href="https://github.com/jrodriguezo">
         <FaGithub className='inline pr-2 text-3xl' />
       </a> 

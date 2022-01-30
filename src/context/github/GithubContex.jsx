@@ -9,6 +9,7 @@ export const GithubProvider = ({children}) => {
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
 
+
     const fetchUsers = async () => {
         const response = await fetch(`${GITHUB_URL}/users`, {
             headers: {
@@ -21,7 +22,27 @@ export const GithubProvider = ({children}) => {
         setLoading(false)
     }
 
-    return <GithubContext.Provider value={{users, loading, fetchUsers}}>
+    // Get search results
+    const searchUsers = async (text) => {
+        setLoading()
+
+        const params = new URLSearchParams({
+            q: text
+        })
+
+        const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
+            headers: {
+                Authorization: `token ${GITHUB_TOKEN}`
+            }
+        })
+        const {items} = await response.json()
+        
+        console.log(items)
+        setUsers(items)
+        setLoading(false)
+    }
+
+    return <GithubContext.Provider value={{users, loading, fetchUsers, setUsers, searchUsers}}>
         {children}
     </GithubContext.Provider>
 }
