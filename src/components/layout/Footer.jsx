@@ -17,7 +17,6 @@ function Footer() {
         <FaGithub className='inline pr-2 text-3xl' />
       </a> 
     </div>
-
   </div> 
   <div>
     <p>Copyright © {footerYear} - All right reserved by @jrodriguezo</p>
