@@ -12,6 +12,10 @@ The result searching for "jrodr" would be:
 
 ![image](https://user-images.githubusercontent.com/36509669/151720444-5a7edc98-2393-4182-bf55-d51cec0ae723.png)
 
+Viewing the Patricia Torvalds's profile (for instance):
+
+![image](https://user-images.githubusercontent.com/36509669/152057749-2f19f6bb-3c11-4ede-bda1-2350db6c1857.png)
+
 
 ## How it works ?
 
