@@ -21,15 +21,13 @@ function User() {
         <div className="avatar">
             <div className="mb-8 rounded-box w-3/4 h-3/4 ring ring-primary ring-offset-base-100 ring-offset-2 bg-primary">
                 <h1 className="m-5 text-center text-neutral-focus">{user.login}</h1>
+                <p className="text-center text-neutral-focus bg-secondary">{user.name}</p>
                 <img src={user.avatar_url} alt="avatar" />
             </div>
             
             <div className="flex flex-col">
                 <div className="p-2 w-full stats">
                     <div className="stat">
-                        <div className="stat-figure text-primary">
-                        
-                        </div> 
                         <div className="stat-title">Followers</div> 
                         <div className="stat-value text-primary">{user.following} 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block ml-2 w-8 h-8 stroke-current">              
