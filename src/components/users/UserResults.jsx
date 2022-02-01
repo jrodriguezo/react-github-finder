@@ -11,7 +11,7 @@ function UserResults() {
         if(loading){
             fetchUsers() //Get initial users (testing purpose)
         }
-    })
+    }, [])
 
     if(!loading) {
         return <div className='grid grid-cols-1 fap-8 xl:grid-cols-4 log:grid-cols-3 md:grid-cols-2'>

@@ -7,6 +7,7 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
 
 export const GithubProvider = ({children}) => {
     const [users, setUsers] = useState([])
+    const [user, setUser] = useState({})
     const [loading, setLoading] = useState(true)
 
 
@@ -22,9 +23,9 @@ export const GithubProvider = ({children}) => {
         setLoading(false)
     }
 
-    // Get search results
+    // Get search users
     const searchUsers = async (text) => {
-        setLoading()
+        setLoading(true)
 
         const params = new URLSearchParams({
             q: text
@@ -37,12 +38,30 @@ export const GithubProvider = ({children}) => {
         })
         const {items} = await response.json()
         
-        console.log(items)
         setUsers(items)
         setLoading(false)
     }
 
-    return <GithubContext.Provider value={{users, loading, fetchUsers, setUsers, searchUsers}}>
+        // Get search user
+        const getUser = async (login) => {
+            setLoading(true)
+    
+            const response = await fetch(`${GITHUB_URL}/users/${login}`, {
+                headers: {
+                    Authorization: `token ${GITHUB_TOKEN}`
+                }
+            })
+
+            if(response.status == 404){
+                window.location = '/notfound'
+            }else{
+                const data = await response.json()
+                setUser(data)
+                setLoading(false)
+            }
+        }
+
+    return <GithubContext.Provider value={{users, loading, fetchUsers, setUsers, searchUsers, user, getUser}}>
         {children}
     </GithubContext.Provider>
 }
