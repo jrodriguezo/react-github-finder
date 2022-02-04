@@ -14,7 +14,7 @@ The result searching for "jrodr" would be:
 
 Viewing the Patricia Torvalds's profile (for instance):
 
-![image](https://user-images.githubusercontent.com/36509669/152057749-2f19f6bb-3c11-4ede-bda1-2350db6c1857.png)
+![image](https://user-images.githubusercontent.com/36509669/152614479-5ec4f4f6-01fa-415c-873b-19a7b25fa83d.png)
 
 
 ## How it works ?
