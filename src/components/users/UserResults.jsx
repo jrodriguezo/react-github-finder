@@ -8,9 +8,7 @@ function UserResults() {
     const {users, loading, fetchUsers} = useContext(GithubContext)
  
     useEffect(() => {
-        if(loading){
-            fetchUsers() //Get initial users (testing purpose)
-        }
+        fetchUsers() //Get initial users (testing purpose)
     }, [])
 
     if(!loading) {

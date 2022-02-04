@@ -1,31 +1,36 @@
 import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { FiCornerDownLeft } from "react-icons/fi";
+import Spinner from "../components/layout/Spinner";
 import GithubContext from "../context/github/GithubContex";
 
 function User() {
-    const {user, getUser, setUser} = useContext(GithubContext)
+    const {user, getUser, setUser, loading} = useContext(GithubContext)
 
     const params = useParams()
 
     useEffect(() =>{
-        if(user.login !== params.login){
-            getUser(params.login)
-            console.log(user)
-        }
-        console.log(user)
-    },[])
+        getUser(params.login)
+    }, [])
 
+    if(loading){
+        return <h3 className="text-center"><Spinner /></h3>
+    }
     
     return (
-        <div className="profile flex justify-center">
+        <div className="profile m-auto">
         <div className="avatar">
-            <div className="mb-8 rounded-box w-3/4 h-3/4 ring ring-primary ring-offset-base-100 ring-offset-2 bg-primary">
+            <div className="mb-8 rounded-box w-1/2 h-1/2 ring ring-primary ring-offset-base-100 ring-offset-2 bg-primary">
                 <h1 className="m-5 text-center text-neutral-focus">{user.login}</h1>
                 <p className="text-center text-neutral-focus bg-secondary">{user.name}</p>
                 <img src={user.avatar_url} alt="avatar" />
             </div>
-            
-            <div className="flex flex-col">
+            <div className="flex flex-col text-left">
+            <div className="ml-5 w-full stats text-white">
+                    <Link to='/' className="link link-hover">
+                     <FiCornerDownLeft size={30} /> 
+                    </Link>  
+                </div>
                 <div className="p-2 w-full stats">
                     <div className="stat">
                         <div className="stat-title">Followers</div> 
@@ -43,12 +48,22 @@ function User() {
                         <div className="stat-value text-secondary">{user.public_repos}</div>
                     </div> 
                 </div>
-                <div className="p-2 w-full stats">
-                    <div className="stat">
-                        <div className="stat-title">Location</div>
-                        <p className="stat-desc text-primary-focus">{user.location}</p>
-                    </div> 
-                </div>
+                {user.location && ( 
+                    <div className="p-2 w-full stats">
+                        <div className="stat">
+                            <div className="stat-title">Location</div>
+                            <p className="stat-desc text-primary-focus">{user.location}</p>
+                        </div> 
+                    </div>
+                )}
+                {user.bio && (
+                    <div className="p-2 w-full stats">
+                        <div className="stat">
+                            <div className="stat-title">Bio</div>
+                            <p className="stat-desc text-primary-focus">{user.bio}</p>
+                        </div> 
+                    </div>
+                )}
             </div>
         </div>
     </div>
