@@ -68,9 +68,10 @@ function User() {
             </div>
         </div>
         {user.bio && (
-        <p className="text-accent text-justify">
-            <p className="text-secondary-focus text-justify">Biography: </p> 
-            {user.bio}</p>
+        <>
+            <p className="text-justify text-primary-focus">Biography: </p> 
+            <p> {user.bio}</p>
+        </>
         )}
     </div>
   );
