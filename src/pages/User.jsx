@@ -56,16 +56,13 @@ function User() {
                         </div> 
                     </div>
                 )}
-                {user.bio && (
-                    <div className="p-2 w-full stats">
-                        <div className="stat">
-                            <div className="stat-title">Bio</div>
-                            <p className="stat-desc text-primary-focus">{user.bio}</p>
-                        </div> 
-                    </div>
-                )}
             </div>
         </div>
+        {user.bio && (
+        <p className="text-secondary text-justify">
+            <p className="text-secondary-focus text-justify">Biography: </p> 
+            {user.bio}</p>
+        )}
     </div>
   );
 }
